@@ -1,0 +1,399 @@
+.chats {
+    width: 100%;
+    max-width: 850px;
+    overflow-y: scroll;
+    padding: 2rem 1rem 8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Hero Section */
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    /* safer than center */
+    padding-top: 5vh;
+    /* Push down from navbar */
+    flex: 1;
+    /* flexible height */
+    min-height: 0;
+    /* allows shrinking */
+    width: 100%;
+    margin-top: 0;
+    /* Handled by padding */
+    overflow-y: auto;
+    /* scroll if needed */
+    text-align: center;
+    color: #f1f5f9;
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-logo {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 2rem;
+    filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.4));
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(to right, #60a5fa, #a855f7);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+    color: #94a3b8;
+    margin-bottom: 3rem;
+    font-size: 1.1rem;
+}
+
+.suggestion-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
+    max-width: 650px;
+    width: 100%;
+}
+
+.suggestion-card {
+    background: rgba(30, 41, 59, 0.4);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    /* Simple clean border */
+    padding: 1.5rem;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Removed ::before gradient mask */
+
+.suggestion-card i {
+    font-size: 1.4rem;
+    margin-bottom: 0.2rem;
+    padding: 10px;
+    border-radius: 10px;
+    background: rgba(59, 130, 246, 0.1);
+    color: #60a5fa;
+    transition: all 0.3s;
+}
+
+/* Specific Colors for Icons (Nth-child approach or could be consistent) */
+.suggestion-card:nth-child(1) i {
+    color: #60a5fa;
+    background: rgba(96, 165, 250, 0.15);
+}
+
+/* Blue */
+.suggestion-card:nth-child(2) i {
+    color: #f472b6;
+    background: rgba(244, 114, 182, 0.15);
+}
+
+/* Pink */
+.suggestion-card:nth-child(3) i {
+    color: #fbbf24;
+    background: rgba(251, 191, 36, 0.15);
+}
+
+/* Amber */
+.suggestion-card:nth-child(4) i {
+    color: #34d399;
+    background: rgba(52, 211, 153, 0.15);
+}
+
+/* Green */
+
+
+.suggestion-card span {
+    font-weight: 500;
+    color: #e2e8f0;
+    font-size: 1rem;
+}
+
+.suggestion-card:hover {
+    transform: translateY(-5px);
+    background: rgba(30, 41, 59, 0.7);
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.suggestion-card:hover i {
+    transform: scale(1.1);
+}
+
+.toast-notification {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(30, 41, 59, 0.9);
+    padding: 10px 24px;
+    border-radius: 50px;
+    color: #fff;
+    font-size: 0.9rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 1000;
+    animation: slideUp 0.3s ease-out;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    backdrop-filter: blur(8px);
+}
+
+@keyframes slideUp {
+    from {
+        transform: translate(-50%, 20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translate(-50%, 0);
+        opacity: 1;
+    }
+}
+
+/* Scrollbar hidden for chats but functional */
+.chats::-webkit-scrollbar {
+    display: none;
+}
+
+.userDiv {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 1rem;
+}
+
+
+.gptDiv {
+    text-align: left;
+    font-size: 1rem;
+    display: flex;
+    flex-direction: column;
+    /* Stack text and code vertically */
+    justify-content: flex-start;
+}
+
+.userMessage {
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 18px 18px 4px 18px;
+    /* Speech bubble shape */
+    margin-left: auto;
+    max-width: 75%;
+    width: fit-content;
+    box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.3);
+    line-height: 1.5;
+}
+
+/* AI Message Container */
+.gptDiv {
+    background: rgba(30, 41, 59, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 20px 24px;
+    border-radius: 18px 18px 18px 4px;
+    /* Inverse bubble */
+    max-width: 85%;
+    width: fit-content;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    color: #e2e8f0;
+    line-height: 1.6;
+}
+
+/* Markdown Styles */
+.gptDiv p {
+    margin-bottom: 1rem;
+}
+
+.gptDiv p:last-child {
+    margin-bottom: 0;
+}
+
+.hljs {
+    border-radius: 12px !important;
+    font-family: 'Fira Code', monospace !important;
+    font-size: 0.9rem;
+    background: #0f172a !important;
+    /* Darker code block */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1.5em !important;
+    margin: 1rem 0;
+}
+
+pre {
+    white-space: pre-wrap;
+}
+
+/* Bold text highlight */
+strong {
+    color: #93c5fd;
+    /* Soft blue for emphasis */
+    font-weight: 600;
+}
+
+/* Code Block Wrapper */
+.code-block-wrapper {
+    margin: 1rem 0;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: #0d1117;
+    /* GitHub Dark background */
+    display: flex;
+    flex-direction: column;
+}
+
+.code-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    font-size: 0.8rem;
+    color: #94a3b8;
+    font-family: 'Fira Code', monospace;
+    user-select: none;
+}
+
+.copy-btn {
+    background: transparent;
+    border: none;
+    color: #94a3b8;
+    cursor: pointer;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 8px;
+    margin: 0;
+    width: auto;
+    font-weight: normal;
+    box-shadow: none;
+    transition: all 0.2s;
+}
+
+.copy-btn:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+    transform: none;
+    box-shadow: none;
+    border-radius: 4px;
+}
+
+/* Adjust hljs within wrapper */
+.code-block-wrapper .hljs {
+    margin: 0 !important;
+    border: none !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    /* Let wrapper handle background */
+    padding: 1.5rem !important;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    overflow-x: auto;
+    /* Ensure horizontal scroll */
+    color: #c9d1d9;
+    /* Default text color */
+}
+
+/* Inline Code Styling */
+:not(pre)>code {
+    background: rgba(110, 118, 129, 0.4);
+    /* GitHub Dark Dim inline bg */
+    padding: 0.2em 0.4em;
+    border-radius: 6px;
+    font-family: 'Fira Code', monospace;
+    font-size: 85%;
+    color: #e6edf3;
+}
+
+/* Ensure pre tag doesn't add extra space */
+.code-block-wrapper pre {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+/* Custom Syntax Highlighting (GitHub Dark Match) */
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-type,
+.hljs-operator {
+    color: #ff7b72 !important;
+    /* Red/Coral */
+}
+
+.hljs-function,
+.hljs-title,
+.hljs-attr,
+.hljs-attribute {
+    color: #d2a8ff !important;
+    /* Purple */
+}
+
+.hljs-string,
+.hljs-doctag,
+.hljs-regexp {
+    color: #a5d6ff !important;
+    /* Light Blue */
+}
+
+.hljs-number,
+.hljs-literal,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag .hljs-attr {
+    color: #79c0ff !important;
+    /* Blue */
+}
+
+.hljs-comment,
+.hljs-quote {
+    color: #8b949e !important;
+    /* Grey */
+    font-style: italic;
+}
+
+.hljs-built_in,
+.hljs-meta {
+    color: #ffa657 !important;
+    /* Orange */
+}
+
+.hljs-params {
+    color: #c9d1d9 !important;
+    /* White/Default */
+}
+
+.hljs-class .hljs-title {
+    color: #f0f6fc !important;
+    /* White/Light Grey for class names */
+}

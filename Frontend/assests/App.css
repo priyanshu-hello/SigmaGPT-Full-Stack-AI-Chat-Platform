@@ -1,0 +1,52 @@
+* {
+    color: #ececec;
+    font-family: 'Outfit', sans-serif;
+    /* Modern, geometric font */
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.app {
+    background: linear-gradient(-45deg, #0f172a, #1e293b, #0f172a, #27272a);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    /* Deep "Living" Midnight Blue */
+    display: flex;
+    min-height: 100vh;
+}
+
+@keyframes gradientBG {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
